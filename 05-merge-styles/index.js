@@ -17,7 +17,8 @@ async function doInOrder(arr) {
     if (arr[i].isFile() && path.extname(arr[i].name) === '.css') {
       await fsP
         .readFile(path.resolve(arr[i].path, arr[i].name), 'utf-8')
-        .then((data) => fsP.appendFile(dist, data + '\n'));
+        .then((data) => fsP.appendFile(dist, data))
+        .then(fsP.appendFile(dist, '\n'));
     }
   }
 }
