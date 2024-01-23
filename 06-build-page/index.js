@@ -10,7 +10,7 @@ function copy(src, dist) {
       obj.forEach((item) => {
         if (item.isDirectory()) {
           const newSrc = path.resolve(item.path, item.name);
-          const newDist = newSrc.replace('assets', 'project-dist\\assets');
+          const newDist = newSrc.replace('assets', path.join('project-dist', 'assets'));
           copy(newSrc, newDist);
         } else {
           fsP.copyFile(
