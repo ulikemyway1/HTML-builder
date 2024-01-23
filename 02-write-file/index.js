@@ -5,7 +5,7 @@ const textFile = fs.createWriteStream(path.resolve(__dirname, 'text.txt'), 'utf-
 
 input.on('data', (data) => {
   const stringData = data.toString();
-  if (stringData.includes('exit') && stringData.length === 6) {
+  if (stringData.trim() === 'exit') {
     process.exit();
   } else {
     textFile.write(data);
